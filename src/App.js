@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+export default function App() {
+  const [isMobile, setIsMobile] = useState(false);
+  function handleResize() {
+    if (window.innerWidth < 720) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  console.log(isMobile);
 
-function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="app">
+      <JobList />
+      {isMobile || <div className="job-desc">Man</div>}
+    </main>
   );
 }
 
-export default App;
+function JobList() {
+  return (
+    <ul className="job-list">
+      <Job />
+    </ul>
+  );
+}
+
+function Job() {
+  return (
+    <li className="job">
+      <img src="images/angle_down.png" alt="test"></img>
+      <p>Hello</p>
+      <div className="type">Backend</div>
+      <div className="skills">
+        <div className="skill">Node.js</div>
+        <div className="skill">Node.js</div>
+        <div className="skill">Node.js</div>
+      </div>
+    </li>
+  );
+}
