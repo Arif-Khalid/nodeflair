@@ -1,6 +1,7 @@
 .app {
   display: flex;
-  justify-content: right;
+  justify-content: left;
+  gap: 5px;
   height: 99vh;
   padding: 2px;
 }
@@ -15,9 +16,13 @@
   overflow-y: scroll;
 }
 
+.job-list::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
 .job-desc {
   background-color: black;
-  width: 55vw;
+  width: 60vw;
 }
 
 .job {
@@ -26,7 +31,6 @@
   background-color: white;
   max-width: 720px;
   min-height: 150px;
-  border-radius: 10px;
   display: grid;
   grid-template-columns: 50px auto 70px;
   grid-template-rows: auto 50px;
@@ -49,7 +53,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
   height: 30px;
   background-color: brown;
   grid-row: 1;
@@ -61,11 +64,12 @@
   grid-column: 1 / 4;
   border-top: 2px solid black;
   background-color: aqua;
+  max-width: 720px;
   display: flex;
   padding-top: 2px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+  overflow: hidden;
   gap: 2px;
 }
 
@@ -73,7 +77,15 @@
   background-color: brown;
   display: flex;
   align-items: center;
-  border-radius: 5px;
   padding-left: 5px;
   padding-right: 5px;
+  height: 45px;
+}
+
+.round-border {
+  border-radius: 10px;
+}
+
+.hide {
+  display: none;
 }
