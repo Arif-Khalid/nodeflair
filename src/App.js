@@ -22,7 +22,7 @@ export default function App() {
 
 function JobList({ isMobile }) {
   return (
-    <ul className={isMobile ? "job-list fill-width" : "job-list"}>
+    <ul className={isMobile ? "job-list mobile-job-list" : "job-list"}>
       <Job />
       <Job />
     </ul>

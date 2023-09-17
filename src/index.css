@@ -1,3 +1,7 @@
+body {
+  background-color: #f3f2ef;
+}
+
 .app {
   display: flex;
   justify-content: center;
@@ -10,7 +14,6 @@
 }
 
 .job-list {
-  background-color: red;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -19,8 +22,8 @@
   overflow-y: scroll;
 }
 
-.fill-width {
-  width: fill;
+.mobile-job-list {
+  width: 94vw;
 }
 .job-list::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
@@ -33,6 +36,7 @@
 
 .job {
   padding: 10px;
+  padding-bottom: 0px;
   position: relative;
   background-color: #f8f8f8;
   min-height: 150px;
@@ -75,7 +79,7 @@
 .job .skillsContainer {
   grid-row: 2;
   grid-column: 1 / -1;
-  border-top: 2px solid black;
+  border-top: 1px solid rgba(85, 85, 85, 0.379);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
