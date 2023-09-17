@@ -47,7 +47,7 @@ function Skills() {
   const ref = useRef(null);
   return (
     <ul className="skillsContainer" ref={ref}>
-      <WrapFlex items={skillsArray} className="skill" />
+      <WrapFlex items={skillsArray} className="skill" etcSymbol="..." />
     </ul>
   );
 }
