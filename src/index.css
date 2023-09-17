@@ -34,12 +34,20 @@
 .job {
   padding: 10px;
   position: relative;
-  background-color: white;
+  background-color: #f8f8f8;
   min-height: 150px;
   display: grid;
   grid-template-columns: 50px auto 70px;
   grid-template-rows: auto 50px;
   grid-gap: 5px;
+  box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.25);
+  transition: 0.2s;
+}
+
+.job:hover {
+  transform: translateY(-2px);
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.75);
 }
 
 .job img {
@@ -55,11 +63,11 @@
 }
 
 .job .type {
-  display: flex;
-  align-items: center;
   justify-content: center;
   height: 30px;
-  background-color: brown;
+  background-color: #ddf7e9;
+  color: #1fc76a;
+  font-weight: 600;
   grid-row: 1;
   grid-column: 3;
 }
@@ -68,31 +76,36 @@
   grid-row: 2;
   grid-column: 1 / -1;
   border-top: 2px solid black;
-  background-color: aqua;
-  padding-top: 2px;
   overflow: hidden;
-}
-
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  width: inherit;
-  gap: 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
 .skill {
-  background-color: brown;
-  display: flex;
-  align-items: center;
-  padding-left: 5px;
-  padding-right: 5px;
-  height: 40px;
+  color: #838383;
+  background-color: #f1f1f1;
+  padding: 5px 8px;
+  margin: 3px 2px;
+  display: inline-block;
+  max-width: 90%;
+  line-height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  font-weight: bold;
+  font-family: "Roboto Mono", "Consolas", monospace;
 }
 
 .round-border {
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .hide {
   display: none;
+}
+
+.vertical-center {
+  display: flex;
+  align-items: center;
 }

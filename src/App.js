@@ -35,7 +35,7 @@ function Job() {
       <li className="job round-border">
         <img src="images/angle_down.png" alt="test"></img>
         <p>Hello</p>
-        <div className="type round-border">Backend</div>
+        <div className="type round-border vertical-center">Backend</div>
         <Skills />
       </li>
     </>
@@ -43,11 +43,19 @@ function Job() {
 }
 
 function Skills() {
-  const skillsArray = ["Node.Js", "ChickenNuggets.js", "SzechaunSauce.js"];
+  const skillsArray = [
+    "Node.Js",
+    "ChickenNuggets.js",
+    "SzechaunSauce.js",
+    "wdadsdwadadwadsads",
+    "wdguasdawhdusakdhwukadhkawuhd",
+  ];
   const ref = useRef(null);
   return (
     <ul className="skillsContainer" ref={ref}>
-      <WrapFlex items={skillsArray} className="skill" etcSymbol="..." />
+      {skillsArray.map((item) => (
+        <li className="skill round-border">{item}</li>
+      ))}
     </ul>
   );
 }
