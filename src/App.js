@@ -2,9 +2,9 @@ import { useState, useRef, useLayoutEffect } from "react";
 import WrapFlex from "./WrapFlex";
 import useResize from "./useResize";
 export default function App() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 720);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1010);
   function handleResize() {
-    if (window.innerWidth < 720) {
+    if (window.innerWidth < 1010) {
       setIsMobile(true);
     } else {
       setIsMobile(false);
@@ -14,15 +14,15 @@ export default function App() {
 
   return (
     <main className="app">
-      <JobList />
+      <JobList isMobile={isMobile} />
       {isMobile || <div className="job-desc">Man</div>}
     </main>
   );
 }
 
-function JobList() {
+function JobList({ isMobile }) {
   return (
-    <ul className="job-list">
+    <ul className={isMobile ? "job-list fill-width" : "job-list"}>
       <Job />
       <Job />
     </ul>

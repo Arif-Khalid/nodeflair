@@ -1,35 +1,40 @@
 .app {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   gap: 5px;
   height: 99vh;
   padding: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  width: min(1120px, 98vw);
 }
 
 .job-list {
   background-color: red;
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 5px;
+  width: 410px;
   overflow-y: scroll;
 }
 
+.fill-width {
+  width: fill;
+}
 .job-list::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
 
 .job-desc {
   background-color: black;
-  width: 60vw;
+  flex: 1;
 }
 
 .job {
   padding: 10px;
   position: relative;
   background-color: white;
-  max-width: 720px;
   min-height: 150px;
   display: grid;
   grid-template-columns: 50px auto 70px;
@@ -65,7 +70,6 @@
   border-top: 2px solid black;
   background-color: aqua;
   padding-top: 2px;
-  padding-bottom: 10px;
   overflow: hidden;
 }
 
@@ -82,7 +86,7 @@
   align-items: center;
   padding-left: 5px;
   padding-right: 5px;
-  height: 45px;
+  height: 40px;
 }
 
 .round-border {
