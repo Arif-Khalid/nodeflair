@@ -44,7 +44,6 @@ function Job() {
 
 function Skills() {
   const skillsArray = ["Node.Js", "ChickenNuggets.js", "SzechaunSauce.js"];
-  const [numberOfItemsDisplayed, setNumberOfItemsDisplayed] = useState(0);
   const ref = useRef(null);
   return (
     <ul className="skillsContainer" ref={ref}>

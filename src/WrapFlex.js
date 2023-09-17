@@ -7,12 +7,6 @@ const style = {
   width: "inherit",
 };
 
-const etcStyle = {
-  position: "absolute",
-  right: "30px",
-  top: "125px",
-};
-
 export default function WrapFlex({
   items,
   gap = "2px",
@@ -21,11 +15,12 @@ export default function WrapFlex({
   className,
 }) {
   const ref = useRef(null);
-  const [availableWidth, setAvailableWidth] = useState(0);
-  const [currentWidth, setCurrentWidth] = useState(0);
+  const [numItemsToDisplay, setNumItemsToDisplay] = useState(0);
+  const [widthArray, setWidthArray] = useState(0);
 
   useEffect(() => {
-    let newWidth = parseInt(paddingLeft) + parseInt(paddingRight);
+    let currentWidth = parseInt(paddingLeft) + parseInt(paddingRight);
+    let tempWidthArray = [];
     for (let i = 0; i < items.length; ++i) {
       const text = document.createElement("span");
       document.body.appendChild(text);
@@ -37,28 +32,35 @@ export default function WrapFlex({
       text.style.whiteSpace = "no-wrap";
       text.innerHTML = items[i];
       text.className = className;
-      newWidth += text.getBoundingClientRect().width;
-      if (i < items.length - 1) newWidth += parseInt(gap);
+      currentWidth += text.getBoundingClientRect().width;
+      tempWidthArray.push(currentWidth);
+      if (i < items.length - 1) currentWidth += parseInt(gap);
       document.body.removeChild(text);
     }
-    setCurrentWidth(newWidth);
+    setWidthArray(tempWidthArray);
   }, [items, paddingLeft, paddingRight, className, gap]);
-  console.log(currentWidth);
-  console.log(availableWidth);
+  console.log(widthArray);
+  console.log(numItemsToDisplay);
   function handleResize() {
-    if (!ref?.current?.getBoundingClientRect().width) return;
-    setAvailableWidth(ref?.current?.getBoundingClientRect().width);
+    const availableWidth = ref?.current?.getBoundingClientRect().width;
+    if (!availableWidth) return;
+    let i = 0;
+    while (i < widthArray.length && widthArray[i] <= availableWidth) {
+      ++i;
+    }
+    setNumItemsToDisplay(i);
   }
   useEffect(handleResize, []);
   useResize(handleResize);
   return (
     <>
       <ul style={{ ...style, gap, paddingLeft, paddingRight }} ref={ref}>
-        {items.map((item) => (
-          <li className="skill">{item}</li>
-        ))}
+        {items.map(
+          (item, i) =>
+            i < numItemsToDisplay && <li className={className}>{item}</li>
+        )}
+        {numItemsToDisplay < items.length && <li className={className}>...</li>}
       </ul>
-      {currentWidth > availableWidth && <span style={etcStyle}>...</span>}
     </>
   );
 }
